@@ -11,6 +11,9 @@ import { StatusBar } from 'expo-status-bar';
 import { weatherImages } from '../constants';
 import { getData, storeData } from '../utils/asyncStorage';
 import { useNavigation } from '@react-navigation/native';
+import { StyleSheet } from 'react-native';
+import { Entypo } from '@expo/vector-icons';
+import colors from '../colors';
 
 export default function ForecastScreen() {
   const [showSearch, toggleSearch] = useState(false);
@@ -20,6 +23,24 @@ export default function ForecastScreen() {
 
   const navigation = useNavigation();
 
+  const styles = StyleSheet.create({
+    screenContainer: {
+      flex: 1,
+      justifyContent: "center",
+      padding: 80,
+      backgroundColor: "#555",
+    },
+    appButton: {
+      padding: 12,
+    },
+    appButtonText: {
+      fontSize: 17,
+    },
+    appButtonContainer: {
+      paddingVertical: 10,
+      paddingHorizontal: 10,
+    },
+  });
 
   const handleSearch = search=>{
     // console.log('value: ',search);
@@ -74,7 +95,7 @@ export default function ForecastScreen() {
       <StatusBar style="light" />
       <Image 
         blurRadius={70} 
-        source={require('../assets/images/bg.png')} 
+        source={require('../assets/images/forecastbg.jpg')} 
         className="absolute w-full h-full" />
         {
           loading? (
@@ -85,9 +106,16 @@ export default function ForecastScreen() {
             <SafeAreaView className="flex flex-1">
 
               <View style={{height: '7%'}} className="mx-4 relative z-50">
+
                 <View 
-                  className="flex-row justify-end items-center rounded-full" 
+                  className="flex-row justify-between items-center rounded-full" 
                   style={{backgroundColor: showSearch? theme.bgWhite(0.2): 'transparent'}}>
+
+                  <TouchableOpacity
+                      onPress={() => navigation.navigate("Home")}
+                  >
+                      <Entypo name="home" size={24} color={colors.lightGray} />
+                  </TouchableOpacity>
                   
                     {
                       showSearch? (
@@ -136,12 +164,7 @@ export default function ForecastScreen() {
                 }    
               </View>
 
-              <View>
-                <Button 
-                  title="Home Page"
-                  onPress={() => navigation.navigate('HOME PAGE')}
-                / >
-              </View>
+              
 
               <View className="mx-4 flex justify-around flex-1 mb-2">
                 <Text className="text-white text-center text-2xl font-bold">

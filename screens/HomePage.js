@@ -1,20 +1,24 @@
 import { View, Text, Image, TextInput, Button, StyleSheet, TouchableOpacity} from 'react-native'
-import React, { useCallback, useEffect, useState } from 'react'
+import React from 'react'
 import { useNavigation } from '@react-navigation/native';
+import { Entypo } from '@expo/vector-icons';
+import colors from '../colors';
 
 
 export default function HomePage (){
 
     const navigation = useNavigation();
-
     return (
         <View style={styles.pagemain}>
             <Image 
             blurRadius={70} 
             source={require('../assets/images/homepagelogo.jpg')} 
             className="absolute w-full h-full" />
-            <TouchableOpacity style={styles.button}>
-                <Text style={styles.ctaText} onPress={() => navigation.navigate('SETTINGS')}>Settings</Text>
+            <TouchableOpacity
+                onPress={() => navigation.navigate("Settings")}
+                style={styles.settingsButton}
+            >
+                <Entypo name="edit" size={24} color={colors.lightGray} />
             </TouchableOpacity>
             <View style={styles.container}>
                 <Image
@@ -26,12 +30,36 @@ export default function HomePage (){
                 <TouchableOpacity style={styles.ctaButton}>
                     <Text style={styles.ctaText} onPress={() => navigation.navigate('forecast')}>Get Started</Text>
                 </TouchableOpacity>
+                <TouchableOpacity
+                    onPress={() => navigation.navigate("Chat")}
+                    style={styles.chatButton}
+                >
+                    <Entypo name="chat" size={24} color={colors.lightGray} />
+                </TouchableOpacity>
             </View>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
+    screenContainer: {
+        flex: 1,
+        justifyContent: "center",
+        padding: 80,
+        backgroundColor: "#555",
+    },
+    appButton: {
+        padding: 12,
+    },
+    appButtonText: {
+        fontSize: 17,
+    },
+    appButtonContainer: {
+        
+        width: 65,
+        paddingVertical: 10,
+        paddingHorizontal: 10,
+    },
     navbar:{
         flex: 1,
         backgroundColor: '#4698eb',
@@ -81,5 +109,42 @@ const styles = StyleSheet.create({
     ctaText: {
         color: 'white', // Button text color
         fontSize: 18,
+    },
+    chatButton: {
+        position: 'absolute',
+        bottom: 50,  // Adjust this value as needed to control the distance from the bottom
+        right: 20,  // Adjust this value as needed to control the distance from the right
+        backgroundColor: colors.primary,
+        height: 50,
+        width: 50,
+        borderRadius: 25,
+        alignItems: 'center',
+        justifyContent: 'center',
+        shadowColor: colors.primary,
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.9,
+        shadowRadius: 8,
+    },
+    settingsButton: {
+        position: 'relative',
+        color: 'white',
+        backgroundColor: colors.primary,
+        top: 20,  // Adjust this value as needed to control the distance from the bottom
+        left: 20,  // Adjust this value as needed to control the distance from the right
+        height: 50,
+        width: 50,
+        borderRadius: 25,
+        alignItems: 'center',
+        justifyContent: 'center',
+        shadowColor: colors.primary,
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.9,
+        shadowRadius: 8,
     },
 });
