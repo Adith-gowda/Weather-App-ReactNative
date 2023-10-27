@@ -47,7 +47,9 @@ Like `npm start` / `yarn start`, but also attempts to open your app on a connect
 ## 6) ChatSection page
 ![WhatsApp Image 2023-10-20 at 20 25 19_b554de0d](https://github.com/Adith-gowda/Weather-App-ReactNative/assets/95766897/91f07f48-0ecd-4565-b0ed-1c0032a82c36)
 
-
+## Team Members:
+1) ADITH SAGAR GOWDA - 21BAI1928
+2) VEGINETI INDHU - 21BAI1927
 
 
 
